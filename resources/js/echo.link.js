@@ -53,7 +53,6 @@ class EchoLink extends ApolloLink {
   }
 
   _createSubscription(subscriptionChannel, observer) {
-
     const privateChannelName = subscriptionChannel.split('private-').pop();
 
     if (!this.subscriptions.find(s => s.channel === subscriptionChannel)) {
