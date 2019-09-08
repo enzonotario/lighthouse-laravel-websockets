@@ -1,0 +1,1 @@
+# Lighthouse - LaravelWebsockets integration example

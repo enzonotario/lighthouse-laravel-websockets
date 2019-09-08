@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerInertia();
+        $this->registerWebSockets();
     }
 
     /**
@@ -24,5 +26,20 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    }
+
+    protected function registerInertia()
+    {
+        Inertia::version(function () {
+            return md5_file(public_path('mix-manifest.json'));
+        });
+        Inertia::share('app.name', 'Lighthouse - ');
+    }
+
+    protected function registerWebSockets()
+    {
+        $this->app->singleton('websockets.router', function () {
+            return new \App\WebSockets\Server\Router();
+        });
     }
 }
