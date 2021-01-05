@@ -17,7 +17,7 @@
         "apollo-client": "latest",
         "apollo-link-batch-http": "^1.2.11",
         "autosize": "^4.0.2",
-        "axios": "^0.19.1",
+        "axios": "^0.21.1",
         "cross-env": "^5.1",
         "eslint": "^5.14.1",
         "eslint-plugin-vue": "^5.2.2",
