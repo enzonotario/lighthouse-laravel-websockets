@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 use Nuwave\Lighthouse\Subscriptions\Contracts\StoresSubscriptions as Storage;
 use Ratchet\ConnectionInterface;
 
-class ArrayChannelManager extends \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager
+class LighthouseArrayChannelManager extends \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager
 {
     public function removeFromAllChannels(ConnectionInterface $connection)
     {

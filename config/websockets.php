@@ -131,5 +131,5 @@ return [
      * The only requirement is that the class should implement
      * `ChannelManager` interface provided by this package.
      */
-    'channel_manager' => \App\WebSockets\Channels\ChannelManagers\ArrayChannelManager::class,
+    'channel_manager' => \App\WebSockets\Channels\ChannelManagers\LighthouseArrayChannelManager::class,
 ];
