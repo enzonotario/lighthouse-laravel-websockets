@@ -2,22 +2,18 @@
 
 namespace App\WebSockets\Channels\ChannelManagers;
 
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\Channel;
-use Illuminate\Support\Arr;
-use Nuwave\Lighthouse\Subscriptions\Contracts\StoresSubscriptions as Storage;
-use Ratchet\ConnectionInterface;
+use App\WebSockets\Channels\PrivateLighthouseChannel;
+use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager;
+use Illuminate\Support\Str;
 
-class LighthouseArrayChannelManager extends \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager
+class LighthouseArrayChannelManager extends ArrayChannelManager
 {
-    public function removeFromAllChannels(ConnectionInterface $connection)
+    protected function determineChannelClass(string $channelName): string
     {
-        $storage = app(Storage::class);
+        if (Str::startsWith($channelName, 'private-lighthouse-')) {
+            return PrivateLighthouseChannel::class;
+        }
 
-        collect(Arr::get($this->channels, $connection->app->id, []))
-            ->each(function (Channel $channel, string $channelName) use ($storage) {
-                $storage->deleteSubscriber($channelName);
-            });
-
-        parent::removeFromAllChannels($connection);
+        return parent::determineChannelClass($channelName);
     }
 }
