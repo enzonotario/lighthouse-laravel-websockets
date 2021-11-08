@@ -1,6 +1,6 @@
 # Lighthouse - LaravelWebsockets integration example
 
-1. Run `composert install`
+1. Run `composer install`
 2. Edit your `.env` and set variables like:
 ```
 PUSHER_APP_ID=test
